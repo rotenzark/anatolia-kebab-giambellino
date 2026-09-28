@@ -1,0 +1,327 @@
+/* PLUMBING_V 1 — reset tecnico canonico (Toolkit/boilerplate/plumbing.css) */
+[hidden] { display: none !important; }
+img { max-width: 100%; height: auto; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* ══════════ ANATOLIA KEBAB & PIZZA — «Kebap di produzione propria.» ══════════
+   Dalla strada al banco: l'insegna (i cassonetti bianchi col serif stretto rosso, la striscia blu notte, la tenda rossa
+   col bordo ocra), il banco sotto la cappa con lo spiedo (la firma), lo striscione giallo, il TABELLONE luminoso sopra
+   il banco (pannelli bianchi nella cornice nera: titoli blu inclinati, piatti rossi, i loro numeri nei cerchi, l'ovale
+   al posto del prezzo), le recensioni sulla tenda, il locale, gli orari, la serranda dipinta. */
+:root {
+  --bianco: #FFFDF7;
+  --crema: #F7F1E3;
+  --rosso: #C9252C;
+  --rosso-scuro: #A61E24;
+  --notte: #1D2A5B;
+  --blu: #2344A6;
+  --tenda: #D4262E;
+  --ocra: #C8952B;
+  --nero: #0E0E10;
+  --soffitto: #1E1F23;
+  --acciaio: #B8BDC3;
+  --giallo: #F4CE1F;
+  --testo: #17181B;
+  --testo-2: #484B53;
+  --verde: #2E9E4F;
+  --f-insegna: 'Noto Serif', 'Times New Roman', Times, serif;
+  --f-tab: 'Roboto Flex', Arial, Helvetica, sans-serif;
+  --gutter: 16px;
+  --testata-h: 68px;
+}
+@media (min-width: 760px) { :root { --gutter: 32px; } }
+@media (min-width: 1000px) { :root { --testata-h: 122px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--soffitto); color: var(--testo); font: 400 1.0625rem/1.55 var(--f-tab); }
+a { color: inherit; }
+b, strong { font-weight: 700; }
+.salta { position: absolute; left: 12px; top: -60px; z-index: 100; padding: 10px 16px; background: var(--bianco); color: var(--testo); font-weight: 700; text-decoration: none; }
+.salta:focus { top: 10px; }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+section[id], article[id] { scroll-margin-top: calc(var(--testata-h) + 12px); }
+.intero { white-space: nowrap; }
+:focus-visible { outline: 3px solid var(--giallo); outline-offset: 2px; }
+
+/* ── la testata: l'insegna ── */
+.testata { position: sticky; top: 0; z-index: 50; background: var(--nero); }
+.testata__insegna { display: flex; align-items: center; gap: 6px; padding: 6px var(--gutter) 6px; }
+.cassonetto { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 3px 12px; background: linear-gradient(180deg, #FFFFFF, var(--bianco) 55%, #F2EBDA); border: 3px solid #030304; box-shadow: inset 0 0 16px rgba(255, 236, 200, .95), 0 0 20px rgba(255, 244, 222, .2); color: var(--rosso); text-decoration: none; }
+.cassonetto__scritta { font-family: var(--f-insegna); font-stretch: 62.5%; font-weight: 700; font-size: 2rem; line-height: 1.02; letter-spacing: .015em; white-space: nowrap; }
+.cassonetto__spiedo { width: 14px; height: 26px; flex: none; }
+.cassonetto--kebap { display: none; }
+.testata__azioni { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.lingue { display: flex; }
+.lingue button { min-width: 36px; min-height: 36px; padding: 0 6px; border: 1px solid rgba(255, 255, 255, .28); background: transparent; color: #C9CBD1; font: 700 .78rem var(--f-tab); cursor: pointer; }
+.lingue button + button { border-left: 0; }
+.lingue button.is-on { background: var(--bianco); color: var(--testo); }
+.testata__chiama { display: none; align-items: center; min-height: 40px; padding: 0 14px; background: var(--rosso); color: #fff; font: 800 .82rem var(--f-tab); font-style: oblique 10deg; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; }
+.burger { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; padding: 10px; border: 1px solid rgba(255, 255, 255, .38); background: transparent; cursor: pointer; }
+.burger span { display: block; height: 2px; background: #fff; transition: transform .2s, opacity .2s; }
+.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.striscia { display: none; }
+.tenda { height: 12px; background: linear-gradient(180deg, var(--tenda) 0 60%, var(--ocra) 60% 100%); box-shadow: 0 6px 14px rgba(0, 0, 0, .38); }
+.menu-mobile { position: fixed; top: var(--testata-h); left: 0; right: 0; z-index: 49; max-height: calc(100vh - var(--testata-h)); overflow-y: auto; padding: 8px var(--gutter) 22px; background: var(--notte); border-bottom: 4px solid var(--ocra); }
+.menu-mobile a { display: block; padding: 12px 2px; border-bottom: 1px solid rgba(255, 255, 255, .16); color: #fff; font-family: var(--f-insegna); font-stretch: 87.5%; font-weight: 700; font-size: 1.25rem; letter-spacing: .05em; text-transform: uppercase; text-decoration: none; }
+.menu-mobile__chiama { display: flex !important; justify-content: center; gap: 8px; margin-top: 12px; border: 0 !important; background: var(--rosso); font-family: var(--f-tab) !important; font-style: oblique 10deg; font-weight: 800 !important; font-size: 1rem !important; }
+
+/* ── il banco: sotto la cappa, lo spiedo ── */
+.banco { position: relative; overflow: hidden; background: radial-gradient(ellipse 70% 60% at 72% 42%, #2D2E34, var(--soffitto) 70%); color: #ECEDEF; padding-bottom: 30px; }
+.luci { height: 18px; background: radial-gradient(circle at 17px 8px, #FFFFFF 0 2px, rgba(235, 243, 255, .6) 2.8px, rgba(235, 243, 255, .14) 5px, transparent 8px) repeat-x; background-size: 34px 18px; }
+.banco__dentro { display: grid; gap: 26px; max-width: 1280px; margin: 0 auto; padding: 16px var(--gutter) 0; }
+.cassone { position: relative; container-type: inline-size; padding: 20px 18px 24px; background: var(--bianco); color: var(--testo); border: 8px solid #030304; box-shadow: 0 0 0 1px #3B3C42, 0 0 54px rgba(255, 244, 220, .2), inset 0 0 42px rgba(255, 234, 198, .6); }
+.cassone__sopra { margin: 0 0 8px; font: 800 1rem/1.3 var(--f-tab); font-style: oblique 10deg; color: var(--blu); }
+/* «PRODUZIONE» è la parola più lunga: largo 6 volte il corpo. Il corpo si misura sul riquadro (cqi), non sulla finestra:
+   a due colonne il riquadro è stretto anche su uno schermo largo */
+.cassone__titolo { margin: 0 0 16px; font-family: var(--f-insegna); font-stretch: 62.5%; font-weight: 800; font-size: clamp(2.4rem, .6rem + 8.8vw, 5.4rem); font-size: clamp(2.4rem, 15.5cqi, 5.4rem); line-height: .93; letter-spacing: .005em; text-transform: uppercase; color: var(--rosso); hyphens: none; }
+.cassone__testo { max-width: 34em; margin: 0 0 16px; font-size: 1.1rem; line-height: 1.5; }
+.cassone__voto { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 0; }
+.voto__n { font-family: var(--f-insegna); font-stretch: 62.5%; font-weight: 800; font-size: 2.3rem; line-height: 1; color: var(--rosso); }
+.voto__su { color: var(--testo-2); font-size: .95rem; }
+/* le stelle del voto: cinque stelle disegnate (una maschera ripetuta), riempite fino al voto (--voto = 4,4 / 5);
+   non sono testo, così nessun carattere resta tagliato a metà */
+.stelle { --piena: #D9981A; --vuota: #D8D3C5; display: inline-block; width: 5.5em; height: 1.05em; font-size: 1.1rem; vertical-align: -.1em; background: linear-gradient(90deg, var(--piena) calc(var(--voto, 1) * 100%), var(--vuota) 0); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 21'%3E%3Cpath d='M11 1l2.9 6.2 6.8.8-5 4.6 1.3 6.7L11 16l-6 3.3 1.3-6.7-5-4.6 6.8-.8z'/%3E%3C/svg%3E") 0 0 / 1.1em 1.05em repeat-x; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 21'%3E%3Cpath d='M11 1l2.9 6.2 6.8.8-5 4.6 1.3 6.7L11 16l-6 3.3 1.3-6.7-5-4.6 6.8-.8z'/%3E%3C/svg%3E") 0 0 / 1.1em 1.05em repeat-x; }
+.stato { display: inline-flex; align-items: center; gap: 8px; margin: 14px 0 0; font-weight: 600; color: var(--testo-2); }
+.stato::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: currentColor; opacity: .45; flex: none; }
+.stato.is-aperto::before { background: var(--verde); opacity: 1; box-shadow: 0 0 0 3px rgba(46, 158, 79, .25); }
+.cassone__azioni { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.bottone { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 18px; border: 2px solid var(--testo); background: var(--bianco); color: var(--testo); font: 800 .95rem/1.1 var(--f-tab); font-style: oblique 10deg; letter-spacing: .03em; text-transform: uppercase; text-decoration: none; }
+.bottone:hover { background: var(--testo); color: var(--bianco); }
+.bottone--rosso { background: var(--rosso); border-color: var(--rosso); color: #fff; }
+.bottone--rosso:hover { background: var(--rosso-scuro); border-color: var(--rosso-scuro); color: #fff; }
+.spiedo { position: relative; margin: 0; display: flex; flex-direction: column; align-items: center; }
+.cappa { width: min(100%, 440px); height: 30px; background: repeating-linear-gradient(90deg, rgba(255, 255, 255, .07) 0 1px, transparent 1px 7px), linear-gradient(180deg, #DADEE2, #A7AEB5 55%, #7E858D); clip-path: polygon(0 0, 100% 0, 93% 100%, 7% 100%); }
+.spiedo__svg { display: block; width: min(86%, 340px); height: auto; aspect-ratio: 400 / 640; }
+.spiedo__piede { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 14px; margin-top: 12px; color: #C6C8CE; font-size: .92rem; text-align: center; }
+.spiedo__rifai { min-height: 40px; padding: 0 16px; border: 1px solid rgba(255, 255, 255, .45); background: transparent; color: #fff; font: 800 .86rem var(--f-tab); font-style: oblique 10deg; letter-spacing: .03em; text-transform: uppercase; cursor: pointer; }
+.spiedo__rifai:hover:not(:disabled) { background: #fff; color: var(--testo); }
+.spiedo__rifai:disabled { opacity: .4; cursor: default; }
+@media (prefers-reduced-motion: reduce) { .spiedo__rifai { display: none; } }
+.no-js .spiedo__rifai { display: none; }
+
+/* ── lo striscione giallo: la produzione propria ── */
+.striscione { background: var(--giallo); color: var(--testo); border-top: 6px solid var(--rosso); padding-bottom: 44px; }
+.striscione__fascia { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 2px 18px; margin: 0; padding: 12px var(--gutter) 14px; border-bottom: 2px solid rgba(23, 24, 27, .14); }
+.fascia__pizza, .fascia__kebap { font-family: var(--f-insegna); font-stretch: 75%; font-weight: 800; font-size: clamp(1.9rem, 1.2rem + 3vw, 3.3rem); line-height: 1; letter-spacing: .04em; color: var(--rosso); }
+.fascia__corsivo { font: 800 clamp(1.1rem, .85rem + 1.3vw, 1.9rem)/1 var(--f-tab); font-style: oblique 10deg; color: var(--blu); }
+.striscione__dentro { display: grid; gap: 26px; max-width: 1200px; margin: 0 auto; padding: 30px var(--gutter) 0; }
+.striscione__titolo { margin: 0 0 14px; font-family: var(--f-insegna); font-stretch: 62.5%; font-weight: 800; font-size: clamp(2.3rem, 1.6rem + 3vw, 3.8rem); line-height: .95; text-transform: uppercase; color: var(--rosso); }
+.striscione__testo p { margin: 0 0 12px; font-size: 1.08rem; }
+.fatti { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 18px; padding: 0; list-style: none; }
+.fatti li { padding: 6px 14px; border: 2px solid var(--testo); border-radius: 999px; background: var(--bianco); font: 800 .9rem/1.2 var(--f-tab); font-style: oblique 10deg; text-transform: uppercase; }
+.ritaglio { margin: 0; padding: 16px 18px; background: #FBF7EC; border-left: 7px solid #D2582A; box-shadow: 0 6px 0 rgba(23, 24, 27, .12); }
+.ritaglio p { margin: 0 0 8px; font-family: var(--f-insegna); font-size: 1.22rem; line-height: 1.4; }
+.ritaglio footer { font-size: .88rem; color: var(--testo-2); }
+.striscione__foto { margin: 0; }
+.striscione__foto .foto { display: block; width: 100%; padding: 0; border: 6px solid #fff; background: #fff; box-shadow: 0 10px 22px rgba(23, 24, 27, .22); cursor: zoom-in; }
+.striscione__foto img { display: block; width: 100%; height: auto; }
+.striscione__foto figcaption { margin-top: 8px; font-size: .9rem; color: var(--testo-2); }
+.striscione__foto--piccola { max-width: 260px; }
+
+/* ── il tabellone ── */
+.tabellone { background: linear-gradient(180deg, #16171A, var(--soffitto) 160px); color: #E9EAEC; padding: 38px 0 0; }
+.tabellone__testa { max-width: 1200px; margin: 0 auto 22px; padding: 0 var(--gutter); }
+.tabellone__titolo { margin: 0; font-family: var(--f-insegna); font-stretch: 62.5%; font-weight: 800; font-size: clamp(2.3rem, 1.6rem + 3vw, 3.8rem); line-height: 1; text-transform: uppercase; color: #fff; }
+.tabellone__sotto { margin: 8px 0 0; color: #C3C6CC; }
+.pannello { display: grid; gap: 26px; width: calc(100% - 2 * var(--gutter)); max-width: 1200px; margin: 0 auto 26px; padding: 22px 18px 30px; background: var(--bianco); color: var(--testo); border: 10px solid #030304; box-shadow: 0 0 0 1px #3B3C42, 0 0 64px rgba(255, 244, 222, .16), inset 0 0 50px rgba(255, 234, 198, .55); }
+.pannello__titolo { margin: 0 0 10px; font: 850 clamp(1.5rem, 1.1rem + 1.4vw, 2.05rem)/1.05 var(--f-tab); font-style: oblique 10deg; letter-spacing: .01em; color: var(--blu); }
+.pannello__titolo small { display: inline-block; font-size: .56em; font-weight: 700; letter-spacing: 0; }
+.pannello__titolo--due { margin-top: 26px; }
+.voci { margin: 0; padding: 0; list-style: none; }
+.voce { display: grid; grid-template-columns: auto 1fr auto; align-items: end; column-gap: 8px; padding: 7px 0; }
+.voce__nome { font: 900 1.02rem/1.15 var(--f-tab); font-style: oblique 10deg; letter-spacing: .01em; text-transform: uppercase; color: var(--rosso); }
+.voce__riga { min-width: 16px; margin-bottom: .34em; border-bottom: 1.5px solid rgba(23, 24, 27, .5); }
+.voce__ingr { grid-column: 1 / -1; margin-top: 1px; font-size: .9rem; line-height: 1.35; color: var(--testo-2); }
+.voci--fitte .voce { padding: 5px 0; }
+.numero { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border: 1.6px solid var(--testo); border-radius: 50%; background: var(--bianco); color: var(--testo); font: 700 .8rem/1 var(--f-tab); font-variant-numeric: tabular-nums; }
+.pannello__coda { margin: 14px 0 0; font-size: .95rem; color: var(--testo-2); }
+.pannello__foto { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 20px; align-content: start; }
+.piatto { position: relative; display: flex; flex-direction: column; margin: 0; }
+.piatto__nome { order: -1; min-height: 2.3em; margin-bottom: 8px; font: 900 .8rem/1.15 var(--f-tab); letter-spacing: .01em; text-transform: uppercase; color: var(--testo); }
+.piatto .foto { display: block; width: 100%; aspect-ratio: 1; padding: 0; border: 0; border-radius: 50%; overflow: hidden; background: #fff; box-shadow: 0 0 0 5px #fff, 0 0 0 6.5px rgba(23, 24, 27, .16), 0 12px 20px rgba(0, 0, 0, .2); cursor: zoom-in; }
+.piatto img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+.piatto .foto:hover img { transform: scale(1.05); }
+.numero--foto { position: absolute; left: -4px; bottom: -6px; }
+.ovale { position: absolute; right: -6px; bottom: -9px; padding: 5px 11px; border: 1.6px solid var(--testo); border-radius: 999px; background: var(--bianco); font: 800 .76rem/1.1 var(--f-tab); font-style: oblique 10deg; white-space: nowrap; box-shadow: 0 2px 0 rgba(0, 0, 0, .12); }
+.piatto--largo { grid-column: 1 / -1; }
+.piatto--largo .foto { aspect-ratio: 16 / 9; border-radius: 22px; }
+.luci--fondo { margin-top: 8px; }
+
+/* ── dicono: sotto la tenda ── */
+.dicono { background: var(--tenda); color: #fff; padding-bottom: 46px; border-top: 14px solid var(--ocra); }
+.dicono__testa { padding: 34px var(--gutter) 8px; text-align: center; }
+.dicono__titolo { margin: 0; font-family: var(--f-insegna); font-stretch: 62.5%; font-weight: 800; font-size: clamp(2.3rem, 1.6rem + 3vw, 3.8rem); line-height: 1; text-transform: uppercase; }
+.dicono__voto { margin: 10px 0 0; }
+.dicono__voto b { font-family: var(--f-insegna); font-stretch: 62.5%; font-weight: 800; font-size: clamp(4.2rem, 3rem + 5vw, 7rem); line-height: 1; }
+.dicono .stelle { --piena: #FFD24A; --vuota: rgba(255, 255, 255, .38); font-size: 1.5rem; }
+.dicono__su { margin: 6px 0 0; font-weight: 600; }
+.recensioni { display: grid; gap: 16px; max-width: 1200px; margin: 20px auto 0; padding: 0 var(--gutter); list-style: none; }
+.recensione { display: flex; flex-direction: column; justify-content: space-between; padding: 20px 22px; border-radius: 26px; background: var(--bianco); color: var(--testo); box-shadow: 0 8px 0 rgba(0, 0, 0, .16); }
+.recensione__testo { margin: 0 0 14px; font-size: 1.02rem; }
+.recensione__chi { margin: 0; font-size: .86rem; color: var(--testo-2); }
+.recensione__chi b { display: block; font: 900 1rem/1.2 var(--f-tab); font-style: oblique 10deg; text-transform: uppercase; color: var(--rosso); }
+.dicono__nota { max-width: 1200px; margin: 22px auto 0; padding: 0 var(--gutter); text-align: center; font-size: .95rem; }
+.dicono__nota a { font-weight: 700; }
+
+/* ── il locale ── */
+.locale { background: var(--crema); color: var(--testo); padding: 46px var(--gutter) 52px; }
+.locale__testo, .locale__foto, .domande { max-width: 1200px; margin-left: auto; margin-right: auto; }
+.locale__titolo, .domande__titolo, .orari__titolo { margin: 0 0 14px; font-family: var(--f-insegna); font-stretch: 62.5%; font-weight: 800; font-size: clamp(2.3rem, 1.6rem + 3vw, 3.8rem); line-height: 1; text-transform: uppercase; color: var(--rosso); }
+.locale__testo p { max-width: 42em; margin: 0 0 12px; font-size: 1.08rem; }
+.locale__foto { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; margin-top: 24px; }
+.locale__foto figure { margin: 0; }
+.locale__grande { grid-column: 1 / -1; }
+.locale__foto .foto { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.locale__foto img { display: block; width: 100%; height: auto; }
+.locale__foto figcaption { margin-top: 6px; font-size: .88rem; color: var(--testo-2); }
+.domande { margin-top: 38px; }
+.domande__titolo { font-size: clamp(1.9rem, 1.4rem + 2vw, 2.8rem); }
+.domande details { border-bottom: 1.5px solid rgba(23, 24, 27, .22); }
+.domande summary { padding: 14px 4px; font: 900 1.02rem/1.3 var(--f-tab); font-style: oblique 10deg; text-transform: uppercase; color: var(--rosso); cursor: pointer; }
+.domande details p { max-width: 46em; margin: 0 0 16px; padding: 0 4px; }
+
+/* ── orari e dove ── */
+.orari { display: grid; gap: 28px; background: var(--notte); color: #EEF0F6; padding: 46px var(--gutter) 52px; }
+.orari__titolo { color: #fff; }
+.stato--chiaro { margin-top: 0; color: #D6DAE6; }
+.orari__tabella { width: 100%; max-width: 520px; margin: 16px 0 18px; border-collapse: collapse; font-size: 1.05rem; }
+.orari__tabella th { padding: 8px 0; text-align: left; font-weight: 500; }
+.orari__tabella td { padding: 8px 0; text-align: right; font-variant-numeric: tabular-nums; }
+.orari__tabella tr { border-bottom: 1px solid rgba(255, 255, 255, .18); }
+.orari__tabella tr.is-today th, .orari__tabella tr.is-today td { color: var(--giallo); font-weight: 800; }
+.orari__testo p { max-width: 36em; margin: 0 0 12px; }
+.orari__contatti a { font-weight: 700; }
+.mappa { border: 6px solid #fff; background: #fff; min-height: 340px; }
+.mappa iframe { display: block; width: 100%; height: 100%; min-height: 340px; border: 0; }
+
+/* ── la serranda ── */
+.serranda { background: #0D0E13; color: #E4E6EA; }
+.serranda__foto { margin: 0; }
+/* la serranda al massimo alta quanto lo schermo: si taglia il tappeto in basso, mai l'insegna in alto */
+.serranda__foto img { display: block; width: 100%; height: auto; max-height: min(84vh, 880px); object-fit: cover; object-position: 50% 0; }
+.serranda__testo { max-width: 1200px; margin: 0 auto; padding: 26px var(--gutter) 92px; text-align: center; }
+.serranda__insegna { display: inline-block; margin: 0 0 14px; padding: 6px 16px; background: var(--bianco); border: 3px solid #030304; box-shadow: 0 0 22px rgba(255, 244, 222, .22), inset 0 0 14px rgba(255, 234, 198, .9); font-family: var(--f-insegna); font-stretch: 62.5%; font-weight: 800; font-size: 1.9rem; line-height: 1.05; color: var(--rosso); }
+.serranda__quando { margin: 0 0 8px; font-size: 1.1rem; }
+.serranda__dove { margin: 0 0 18px; }
+.serranda__cred { max-width: 52em; margin: 0 auto 10px; font-size: .84rem; color: #A9ADB6; }
+.serranda__su { color: #fff; font-weight: 700; }
+
+/* ── reveal (plumbing) ── */
+.js .reveal { opacity: 0; }
+.js .reveal.in-view { opacity: 1; }
+html:not(.js) .reveal { opacity: 1; }
+.reduced-motion .reveal { opacity: 1 !important; }
+
+/* ── le foto, la barra, la lightbox ── */
+.foto { font: inherit; }
+.action-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; display: grid; grid-template-columns: 1fr 1fr 1fr; background: var(--nero); transform: translateY(100%); transition: transform .25s; }
+.action-bar.is-visible { transform: translateY(0); }
+.action-bar a { display: flex; align-items: center; justify-content: center; min-height: 52px; color: #fff; font: 800 .86rem var(--f-tab); font-style: oblique 10deg; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; }
+.action-bar a:first-child { background: var(--rosso); }
+.action-bar a:nth-child(2) { background: var(--notte); }
+#lightbox { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(14, 14, 16, .94); }
+#lightbox[hidden] { display: none !important; }
+#lightbox img { width: auto; max-width: min(1400px, 100%); max-height: 88vh; }
+#lightboxClose { position: absolute; top: 14px; right: 16px; width: 48px; height: 48px; border: 1px solid rgba(255, 255, 255, .6); border-radius: 50%; background: transparent; color: #fff; font-size: 32px; line-height: 1; cursor: pointer; }
+
+/* ── le larghezze ── */
+/* i telefoni più stretti: l'insegna, le lingue e il menu devono stare in 320 px (sbordava a 345) */
+@media (max-width: 359px) {
+  .testata__insegna { gap: 4px; }
+  .cassonetto { gap: 6px; padding: 3px 8px; }
+  .cassonetto__scritta { font-size: 1.55rem; }
+  .lingue button { min-width: 32px; }
+}
+@media (min-width: 560px) {
+  .cassonetto--kebap { display: flex; }
+  .testata__chiama { display: inline-flex; }
+  .striscione__foto--piccola { justify-self: start; }
+}
+@media (min-width: 760px) {
+  .action-bar { display: none; }
+  .recensioni { grid-template-columns: 1fr 1fr; }
+  .locale__foto { grid-template-columns: repeat(4, 1fr); }
+  .pannello__foto { grid-template-columns: repeat(3, 1fr); }
+  .piatto--largo { grid-column: 1 / -1; }
+  .orari { grid-template-columns: 1fr 1.1fr; align-items: stretch; }
+  .serranda__testo { padding-bottom: 40px; }
+}
+@media (min-width: 1000px) {
+  .testata__insegna { gap: 8px; padding: 8px var(--gutter) 6px; }
+  .cassonetto__scritta { font-size: 2.35rem; }
+  .cassonetto__spiedo { width: 16px; height: 30px; }
+  .burger { display: none; }
+  .striscia { display: flex; justify-content: center; flex-wrap: wrap; gap: 2px clamp(12px, 2.2vw, 34px); padding: 6px var(--gutter); background: linear-gradient(180deg, #FFFFFF, #F3EDDF); border-top: 3px solid #030304; border-bottom: 3px solid #030304; }
+  .striscia a { padding: 2px 4px; font-family: var(--f-insegna); font-stretch: 87.5%; font-weight: 700; font-size: 1rem; letter-spacing: .07em; text-transform: uppercase; text-decoration: none; color: var(--notte); }
+  .striscia a:hover, .striscia a[aria-current="true"] { color: var(--rosso); }
+  .banco__dentro { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: start; gap: 40px; padding-top: 26px; }
+  .cassone { padding: 30px 34px 34px; }
+  .spiedo__svg { width: min(100%, 330px); }
+  .striscione__dentro { grid-template-columns: minmax(0, .9fr) minmax(0, 1.35fr) minmax(0, .55fr); align-items: start; gap: 34px; }
+  .striscione__foto--piccola { margin-top: 140px; }
+  .pannello { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 38px; padding: 30px 34px 36px; }
+  /* le foto restano in vista mentre si scorre l'elenco, come sul tabellone */
+  .pannello__foto { grid-template-columns: 1fr 1fr; position: sticky; top: calc(var(--testata-h) + 24px); }
+  .recensioni { grid-template-columns: repeat(3, 1fr); }
+  .locale__foto { grid-template-columns: repeat(4, 1fr); }
+  .locale__grande { grid-column: 1 / -1; }
+  .orari { padding: 60px max(var(--gutter), calc((100% - 1200px) / 2)); gap: 44px; }
+}
+@media (min-width: 1200px) {
+  .pannello__foto { gap: 34px 26px; }
+}
+
+/*SPIEDO*/
+/* i colori della firma (entrano in css/styles.css). Le trasparenze stanno nei fill-opacity/stroke-opacity: main.js anima
+   solo l'opacity dei gruppi (e il colore della carne), che nello stato finale vale 1. */
+.griglia__telaio { fill: url(#g-acciaio); stroke: #5E656C; stroke-width: 1.5; }
+.griglia__spazzolato { fill: none; stroke: #FFFFFF; stroke-opacity: .07; stroke-width: 1; }
+.fornello__spento { fill: #2B2B2E; }
+.piastra__accesa { fill: url(#g-brace); }
+.fornello__maglia { fill: url(#p-fornello); stroke: #45474C; stroke-width: 2; }
+.alone { fill: url(#g-alone); pointer-events: none; }
+.asta__motore { fill: url(#g-acciaio); stroke: #5E656C; stroke-width: 1; }
+.asta__ferro { fill: none; stroke: #8A9199; stroke-width: 5; }
+.asta__luce { fill: none; stroke: #E4E8EB; stroke-opacity: .7; stroke-width: 1.2; }
+.asta__cuscinetto { fill: url(#g-acciaio); stroke: #5E656C; stroke-width: 1; }
+.piatto__faccia { fill: #C3C8CD; stroke: #7C838A; stroke-width: 1; }
+.piatto__bordo { fill: #858C93; }
+.fetta__carne, .carne-lembo { fill: currentColor; }
+.carne-lembo { stroke: #3A1A0A; stroke-opacity: .25; stroke-width: .8; }
+.fetta__solco { fill: none; stroke: #2A1206; stroke-opacity: .42; stroke-width: 1.3; }
+.fetta__ombra { fill: url(#g-ombra-fetta); }
+.fetta__brace { fill: url(#g-brace-fetta); }
+.fetta__orlo { fill: none; stroke: #3A1A0A; stroke-opacity: .28; stroke-width: 1.4; }
+.fetta__asta { fill: none; stroke: #8A9199; stroke-width: 5; }
+.carne-vena { fill: var(--vena, #DDA66C); }
+.carne-crosta { fill: #3F1D0B; }
+.cappello__disco { fill: #B7BCC2; stroke: #6F767E; stroke-width: 1.2; }
+.cappello__mozzo { fill: url(#g-acciaio); stroke: #5E656C; stroke-width: 1; }
+.cappello__dado { fill: #D6DADE; }
+.banco__piano { fill: url(#g-acciaio-v); }
+.banco__filo { fill: none; stroke: #E9ECEE; stroke-opacity: .8; stroke-width: 1; }
+.vasca__corpo { fill: url(#g-acciaio); stroke: #5E656C; stroke-width: 1; }
+.vasca__dentro { fill: url(#g-vasca); stroke: #6B7278; stroke-width: 1; }
+.mucchio__carne { fill: #7A3A18; stroke: #4F240F; stroke-width: .8; }
+.mucchio__scura { fill: #4A220E; fill-opacity: .7; }
+.mucchio__chiara { fill: #C8834A; fill-opacity: .75; }
+.riccio__carne { fill: #7C3E1C; stroke: #4F240F; stroke-width: .6; }
+.riccio__luce { fill: none; stroke: #C27C45; stroke-width: 1.2; stroke-linecap: round; }
+.vasca__labbro { fill: none; stroke: #D9DDE1; stroke-width: 3; stroke-linecap: round; }
+.coltello { visibility: hidden; }
+.coltello__corpo { fill: #34373C; stroke: #1E2024; stroke-width: 1; }
+.coltello__impugnatura { fill: #1F2125; }
+.coltello__luce { fill: none; stroke: #8C929A; stroke-opacity: .7; stroke-width: 2; stroke-linecap: round; }
+.lama__disco { fill: #D5D9DD; stroke: #7C838A; stroke-width: 1.2; }
+.lama__raggi { fill: none; stroke: #9AA1A8; stroke-width: 1.4; stroke-linecap: round; }
+.lama__mozzo { fill: #4E545B; }
+.coltello__guardia { fill: none; stroke: #2A2D31; stroke-width: 7; stroke-linecap: round; }
+/* generato da _akg_firma.mjs: lo stato d'attesa della firma */
+.firma-attesa .fetta, .firma-attesa .cappello, .firma-attesa .riccio, .firma-attesa .mucchio { opacity: 0; }
+.firma-attesa .piastra__accesa, .firma-attesa .alone { opacity: 0; }
+/*/SPIEDO*/
