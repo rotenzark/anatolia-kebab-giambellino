@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
 <script>(function(){var r=document.documentElement;r.classList.remove('no-js');
 /* la firma: finché main.js non parte lo spiedo è l'asta vuota davanti alla griglia spenta; se il codice non arriva, dopo 2,5 s la pagina va allo stato finale */
 try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add('firma-attesa');window.__attesaSpiedo=setTimeout(function(){r.classList.remove('firma-attesa')},2500)}}catch(e){}})()</script>
@@ -20,15 +21,73 @@ try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add(
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wdth,wght@62.5..100,400..800&amp;family=Roboto+Flex:slnt,wght@-10..0,400..1000&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/fonts.css?v=1">
 <link rel="stylesheet" href="css/styles.css?v=1">
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 <script src="js/main.js?v=1" defer></script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Restaurant","name":"Anatolia Kebab & Pizza","description":"Kebap di solo vitello di produzione propria o di solo pollo, pizze, falafel e dolci turchi fatti in casa, in Via Giambellino 15 a Milano dal 2002.","slogan":"Kebap di produzione propria.","foundingDate":"2002","url":"https://rotenzark.github.io/anatolia-kebab-giambellino/","image":"https://rotenzark.github.io/anatolia-kebab-giambellino/img/og.jpg","telephone":"+39 02 423 5885","servesCuisine":["Turca","Kebab","Pizza"],"acceptsReservations":"False","priceRange":"€","address":{"@type":"PostalAddress","streetAddress":"Via Giambellino 15","postalCode":"20146","addressLocality":"Milano","addressRegion":"MI","addressCountry":"IT"},"geo":{"@type":"GeoCoordinates","latitude":45.45138,"longitude":9.15138},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Saturday","Sunday"],"opens":"11:00","closes":"23:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"11:00","closes":"13:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"14:30","closes":"23:00"}],"sameAs":["https://www.instagram.com/anatoliakebap_milano/"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.4","reviewCount":"1029","bestRating":"5"}}
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Anatolia Kebab & Pizza",
+  "description": "Kebap di solo vitello di produzione propria o di solo pollo, pizze, falafel e dolci turchi fatti in casa, in Via Giambellino 15 a Milano dal 2002.",
+  "slogan": "Kebap di produzione propria.",
+  "foundingDate": "2002",
+  "url": "https://rotenzark.github.io/anatolia-kebab-giambellino/",
+  "image": "https://rotenzark.github.io/anatolia-kebab-giambellino/img/og.jpg",
+  "telephone": "+39 02 423 5885",
+  "servesCuisine": [
+    "Turca",
+    "Kebab",
+    "Pizza"
+  ],
+  "acceptsReservations": "False",
+  "priceRange": "€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Giambellino 15",
+    "postalCode": "20146",
+    "addressLocality": "Milano",
+    "addressRegion": "MI",
+    "addressCountry": "IT"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 45.45138,
+    "longitude": 9.15138
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "11:00",
+      "closes": "23:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Friday",
+      "opens": "11:00",
+      "closes": "13:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Friday",
+      "opens": "14:30",
+      "closes": "23:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/anatoliakebap_milano/"
+  ]
+}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -184,7 +243,7 @@ try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add(
           <li data-i18n="s.f5">Niente alcolici</li>
         </ul>
         <blockquote class="ritaglio">
-          <p>«E lo spiedone viene preparato in «casa», dettaglio tutt'altro che scontato.»</p>
+          <p lang="it">«E lo spiedone viene preparato in «casa», dettaglio tutt'altro che scontato.»</p>
           <footer data-i18n="s.fonte">Vivimilano, Corriere della Sera, febbraio 2022: il primo dei tre kebab scelti, sotto il titolo «Kebab, qui è un'arte».</footer>
         </blockquote>
       </div>
@@ -384,12 +443,12 @@ try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add(
       <p class="dicono__su" data-i18n="r.voto">su Google, 1.029 recensioni</p>
     </div>
     <ul class="recensioni">
-      <li class="recensione reveal"><p class="recensione__testo">«Ottimo Kebab di vitello! Quasi introvabile, preparato a mano dai proprietari. Si riconosce subito che è fresco e fatto bene, il rotolo di carne infatti e' composto da rondelle di carne impilate una sull'altra e non e' un ammasso unico.»</p><p class="recensione__chi"><b>Emidio Moscatelli</b> <span><span data-i18n="r.s5">5 stelle su 5</span> · <span data-i18n="r.a2">2 anni fa</span></span></p></li>
-      <li class="recensione reveal"><p class="recensione__testo">«La carne non la solita surgelata. La fanno loro. È veramente succulenta. Sono appena tornato da Istanbul e questo non sfigura per niente!!! […] Squisito.»</p><p class="recensione__chi"><b>pietro dabano</b> <span><span data-i18n="r.s5">5 stelle su 5</span> · <span data-i18n="r.m7">7 mesi fa</span></span></p></li>
-      <li class="recensione reveal"><p class="recensione__testo">«Kebab di un livello altissimo, non il solito rotolo industriale. Carne buonissima e speziata il giusto. Personale di un’educazione e disponibilità inaudita.»</p><p class="recensione__chi"><b>Epic Brozo</b> <span><span data-i18n="r.s5">5 stelle su 5</span> · <span data-i18n="r.m3">3 mesi fa</span></span></p></li>
-      <li class="recensione reveal"><p class="recensione__testo">«Conosco questo posto da almeno 15 anni e non sono mai stata delusa. Per me il kebab più buono di Milano. La carne ha una qualità diversa rispetto agli altri kebab provati così come il pane. Davvero grazie perché esistete»</p><p class="recensione__chi"><b>Sara Barsoum</b> <span><span data-i18n="r.s5">5 stelle su 5</span> · <span data-i18n="r.a2">2 anni fa</span></span></p></li>
-      <li class="recensione reveal"><p class="recensione__testo">«Il miglior ristorante Kebab in assoluto. Lo spiedo sempre di ottima qualità e la pita fatta da loro è da urlo. […] L'ambiente è pulito, ben frequentato e i ragazzi tutti, dai proprietari ai dipendenti, sono sempre sorridenti, cordiali e super veloci. Super bravi.»</p><p class="recensione__chi"><b>manuela buglioni</b> <span><span data-i18n="r.s5">5 stelle su 5</span> · <span data-i18n="r.a1">un anno fa</span></span></p></li>
-      <li class="recensione reveal"><p class="recensione__testo">«Prima volta che provo il famoso kebab di Anatolia e non sono rimasta delusa! Abbiamo provato pizza kebab, panino e yufka. Tutti molto pieni di carne (molto buona e ben speziata) e ingredienti freschi. […] Il panino invece era perfetto! Buoni anche i falafel.»</p><p class="recensione__chi"><b>Giulia Fraschetta</b> <span><span data-i18n="r.s5">5 stelle su 5</span> · <span data-i18n="r.a1">un anno fa</span></span></p></li>
+      <li class="recensione reveal"><p lang="it" class="recensione__testo">«Ottimo Kebab di vitello! Quasi introvabile, preparato a mano dai proprietari. Si riconosce subito che è fresco e fatto bene, il rotolo di carne infatti e' composto da rondelle di carne impilate una sull'altra e non e' un ammasso unico.»</p><p class="recensione__chi"><b>Emidio Moscatelli</b> <span><span data-i18n="r.s5">5 stelle su 5</span> · <span data-i18n="r.a2">2 anni fa</span></span></p></li>
+      <li class="recensione reveal"><p lang="it" class="recensione__testo">«La carne non la solita surgelata. La fanno loro. È veramente succulenta. Sono appena tornato da Istanbul e questo non sfigura per niente!!! […] Squisito.»</p><p class="recensione__chi"><b>pietro dabano</b> <span><span data-i18n="r.s5">5 stelle su 5</span> · <span data-i18n="r.m7">7 mesi fa</span></span></p></li>
+      <li class="recensione reveal"><p lang="it" class="recensione__testo">«Kebab di un livello altissimo, non il solito rotolo industriale. Carne buonissima e speziata il giusto. Personale di un’educazione e disponibilità inaudita.»</p><p class="recensione__chi"><b>Epic Brozo</b> <span><span data-i18n="r.s5">5 stelle su 5</span> · <span data-i18n="r.m3">3 mesi fa</span></span></p></li>
+      <li class="recensione reveal"><p lang="it" class="recensione__testo">«Conosco questo posto da almeno 15 anni e non sono mai stata delusa. Per me il kebab più buono di Milano. La carne ha una qualità diversa rispetto agli altri kebab provati così come il pane. Davvero grazie perché esistete»</p><p class="recensione__chi"><b>Sara Barsoum</b> <span><span data-i18n="r.s5">5 stelle su 5</span> · <span data-i18n="r.a2">2 anni fa</span></span></p></li>
+      <li class="recensione reveal"><p lang="it" class="recensione__testo">«Il miglior ristorante Kebab in assoluto. Lo spiedo sempre di ottima qualità e la pita fatta da loro è da urlo. […] L'ambiente è pulito, ben frequentato e i ragazzi tutti, dai proprietari ai dipendenti, sono sempre sorridenti, cordiali e super veloci. Super bravi.»</p><p class="recensione__chi"><b>manuela buglioni</b> <span><span data-i18n="r.s5">5 stelle su 5</span> · <span data-i18n="r.a1">un anno fa</span></span></p></li>
+      <li class="recensione reveal"><p lang="it" class="recensione__testo">«Prima volta che provo il famoso kebab di Anatolia e non sono rimasta delusa! Abbiamo provato pizza kebab, panino e yufka. Tutti molto pieni di carne (molto buona e ben speziata) e ingredienti freschi. […] Il panino invece era perfetto! Buoni anche i falafel.»</p><p class="recensione__chi"><b>Giulia Fraschetta</b> <span><span data-i18n="r.s5">5 stelle su 5</span> · <span data-i18n="r.a1">un anno fa</span></span></p></li>
     </ul>
     <p class="dicono__nota"><span data-i18n="r.nota">Dalle recensioni su Google, come sono state scritte; i tagli sono segnati […].</span> <a href="https://www.google.com/maps/search/?api=1&amp;query=Anatolia%20Kebab%20%26%20Pizza%20Via%20Giambellino%2015%20Milano" target="_blank" rel="noopener" data-i18n="r.tutte">Tutte le recensioni</a></p>
   </section>
@@ -455,7 +514,7 @@ try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add(
       <p class="orari__contatti"><a href="tel:+39024235885" class="intero">02 423 5885</a> · <a href="https://www.instagram.com/anatoliakebap_milano/" target="_blank" rel="noopener">Instagram</a> · <a href="https://glovoapp.com/it/it/milano/stores/anatolia-2" target="_blank" rel="noopener">Glovo</a></p>
     </div>
     <div class="mappa reveal">
-      <iframe title="Mappa: Anatolia Kebab &amp; Pizza, Via Giambellino 15, Milano" data-i18n-title="o.mappa" src="https://maps.google.com/maps?q=Anatolia%20Kebab%20%26%20Pizza%2C%20Via%20Giambellino%2015%2C%20Milano&amp;z=16&amp;output=embed" width="600" height="440" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="mappa-clic" data-mappa-clic style="--mappa-h: 440px"><template><iframe title="Mappa: Anatolia Kebab &amp; Pizza, Via Giambellino 15, Milano" data-i18n-title="o.mappa" src="https://maps.google.com/maps?q=Anatolia%20Kebab%20%26%20Pizza%2C%20Via%20Giambellino%2015%2C%20Milano&amp;z=16&amp;output=embed" width="600" height="440" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></template><div class="mappa-clic__velo"><a class="mappa-clic__btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=Anatolia%20Kebab%20%26%20Pizza%2C%20Via%20Giambellino%2015%2C%2020146%20Milano" target="_blank" rel="noopener">Mostra la mappa</a><p class="mappa-clic__nota">La mappa è di Google: aprendola, Google riceve il tuo indirizzo IP e può usare i suoi cookie.</p></div></div>
     </div>
   </section>
 
@@ -470,7 +529,7 @@ try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add(
     <p class="serranda__insegna">ANATOLİA KEBAP &amp; PİZZA</p>
     <p class="serranda__quando" data-i18n="z.quando">Dal 2002 al 15 di Via Giambellino. Tutti i giorni fino alle 23, poi giù la serranda.</p>
     <p class="serranda__dove">Via Giambellino 15, 20146 Milano · <a href="tel:+39024235885" class="intero">02 423 5885</a> · <a href="https://www.instagram.com/anatoliakebap_milano/" target="_blank" rel="noopener">Instagram</a></p>
-    <p class="serranda__cred" data-i18n="z.cred">Sito dimostrativo realizzato da <a href="https://bespokestud.io" rel="noopener">Bespoke Studio</a> · foto dalla scheda Google (del locale e dei clienti) e dall'Instagram del locale, recensioni da Google, il menu dal tabellone del locale e da Glovo (settembre 2026). Lo spiedo in apertura è disegnato.</p>
+    <p class="serranda__cred" data-i18n="z.cred">Sito dimostrativo realizzato da <a href="https://bespokestud.io" rel="noopener">Bespoke Studio</a> · <a href="privacy.html">Privacy</a> · foto dalla scheda Google (del locale e dei clienti) e dall'Instagram del locale, recensioni da Google, il menu dal tabellone del locale e da Glovo (settembre 2026). Lo spiedo in apertura è disegnato.</p>
     <p><a class="serranda__su" href="#inizio" data-i18n="z.su">Torna su ↑</a></p>
   </div>
 </footer>
@@ -486,5 +545,6 @@ try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add(
   <img id="lightboxImg" src="" alt="">
 </div>
 
+<script src="js/mappa-clic.js?v=1" defer></script>
 </body>
 </html>
